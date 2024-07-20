@@ -21,9 +21,11 @@
                 let domain = document.getElementById('upload_domain').value;
                 try {
                     let res = await fetch(domain + "/api/user_invoice/upload", params);
+                    let errorText = document.getElementById('error_text');
+                    errorText.value = res.text();
                 } catch(e) {
-                    let fileElement = document.getElementById('error_text');
-                    fileElement.value = e;
+                    let errorText = document.getElementById('error_text');
+                    errorText.value = e;
                 }
             }
         </script>
@@ -37,10 +39,12 @@
             <div style="margin-top: 10px;">
                 <div>アップロード先ドメイン</div>
                 <input id="upload_domain" type="text">
-            <div>
+            <div style="margin-top: 10px;">
                 <button onClick="upload();" >アップロード</button>
             </div>
-            <textarea id="error_text" style="width: 100%; height: 100px;"></textarea>
+            <div style="margin-top: 10px;">
+                <textarea id="error_text" style="width: 100%; height: 100px;"></textarea>
+            </div>
         </div>
     </body>
 </html>
