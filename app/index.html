@@ -11,9 +11,9 @@
                 let files = fileElement.files;
                 const formData = new FormData();
                 formData.append('id', "basic.U2040354");
-                files.forEach(file => {
-                    formData.append('files', file);
-                });
+                for (var i = 0; i < files.length; i++) {
+                    formData.append('files', files[i]);
+                };
                 const params = {
                     method: 'POST',
                     body: formData,
