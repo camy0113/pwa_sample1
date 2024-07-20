@@ -6,7 +6,7 @@
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('./sw.js');
             }
-            function upload() {
+            async function upload() {
                 let fileElement = document.getElementById('camera_file');
                 let files = fileElement.files;
                 const formData = new FormData();
@@ -19,7 +19,12 @@
                     body: formData,
                 };
                 let domain = document.getElementById('upload_domain').value;
-                fetch(domain + "/api/user_invoice/upload", params);
+                try {
+                    let res = await fetch(domain + "/api/user_invoice/upload", params);
+                } catch(e) {
+                    let fileElement = document.getElementById('error_text');
+                    fileElement.value = e;
+                }
             }
         </script>
     </head>
@@ -35,6 +40,7 @@
             <div>
                 <button onClick="upload();" >アップロード</button>
             </div>
+            <textarea id="error_text" style="width: 100%; height: 100px;"></textarea>
         </div>
     </body>
 </html>
