@@ -3,5 +3,12 @@
     "name": "PWA Sample",
     "start_url": "index.html",
     "display": "standalone",
-    "orientation": "portrait"    
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/pwa_sample2/icon.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
 }
