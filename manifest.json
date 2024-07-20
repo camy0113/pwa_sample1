@@ -4,11 +4,4 @@
     "start_url": "index.html",
     "display": "standalone",
     "orientation": "portrait",
-    "icons": [
-        {
-            "src": "/pwa_sample1/icon.png",
-            "type": "image/png",
-            "sizes": "512x512"
-        }
-    ]
 }
