@@ -6,13 +6,20 @@
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('./sw.js');
             }
+            function upload() {
+                console.log('upload');
+            }
         </script>
     </head>
     <body>
         <div>
-            <div>カメラ起動</div>
-            <input type="file" capture="environment" accept="image/*">
+            <div>
+                <div>カメラ起動</div>
+                <input type="file" capture="environment" accept="image/*">
+            </div>
+            <div style="margin-top: 10px;">
+                <button onClick="upload();" >アップロード</button>
+            </div>
         </div>
-        <div>Hello</div>
     </body>
 </html>
