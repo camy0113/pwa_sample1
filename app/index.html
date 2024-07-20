@@ -7,7 +7,19 @@
                 navigator.serviceWorker.register('./sw.js');
             }
             function upload() {
-                console.log('upload');
+                let fileElement = document.getElementById('camera_file');
+                let files = fileElement.files;
+                const formData = new FormData();
+                formData.append('id', "basic.U2040354");
+                files.forEach(file => {
+                    formData.append('files', file);
+                });
+                const params = {
+                    method: 'POST',
+                    body: formData,
+                };
+                let domain = document.getElementById('upload_domain').value;
+                fetch(domain + "/api/user_invoice/upload", params);
             }
         </script>
     </head>
@@ -15,9 +27,12 @@
         <div>
             <div>
                 <div>カメラ起動</div>
-                <input type="file" capture="environment" accept="image/*">
+                <input id="camera_file" type="file" capture="environment" accept="image/*">
             </div>
             <div style="margin-top: 10px;">
+                <div>アップロード先ドメイン</div>
+                <input id="upload_domain" type="text">
+            <div>
                 <button onClick="upload();" >アップロード</button>
             </div>
         </div>
