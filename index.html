@@ -1,15 +1,15 @@
 <html>
     <head>
         <link rel="manifest" href="/pwa_sample1/manifest.json">
-        <script type="text/javascript">
-            if ('serviceWorker' in navigator) {
-              navigator.serviceWorker.register('/pwa_sample1/sw.js')
-              .then((reg) => {
-              });
-            }
-        </script>
     </head>
     <body>
         <div>Hello</div>
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener("load", function() {
+                    navigator.serviceWorker.register('/pwa_sample1/sw.js');
+                });
+            }
+        </script>        
     </body>
 </html>
